@@ -1,0 +1,243 @@
+/* DataConnector page layout */
+.data-connector h1 {
+  margin-bottom: 1.5rem;
+}
+
+.dc-layout {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.dc-sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dc-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dc-loading,
+.dc-error {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.dc-error {
+  color: #d32f2f;
+}
+
+/* Dataset list */
+.dataset-list h2,
+.dataset-preview h2,
+.field-binding-panel h2,
+.template-select h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #1a1a2e;
+}
+
+.dataset-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dataset-card {
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border: 2px solid #e0e0e8;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.dataset-card:hover {
+  border-color: #b0b0cc;
+}
+
+.dataset-card.selected {
+  border-color: #1a1a2e;
+  box-shadow: 0 0 0 1px #1a1a2e;
+}
+
+.dataset-card-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.dataset-card-desc {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.dataset-card-meta {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  color: #888;
+}
+
+/* Template select */
+.template-select select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid #e0e0e8;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: #fff;
+  color: #1a1a2e;
+}
+
+.template-select select:focus {
+  outline: none;
+  border-color: #1a1a2e;
+}
+
+/* Dataset preview */
+.dataset-preview {
+  background: #fff;
+  border: 1px solid #e0e0e8;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.preview-info {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 0.75rem;
+}
+
+.preview-table-wrapper {
+  overflow-x: auto;
+}
+
+.preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.preview-table th,
+.preview-table td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+}
+
+.preview-table th {
+  font-weight: 600;
+  color: #1a1a2e;
+  background: #f8f8fc;
+  border-bottom: 2px solid #e0e0e8;
+}
+
+.preview-table tbody tr:hover {
+  background: #f8f8fc;
+}
+
+/* Field binding panel */
+.field-binding-panel {
+  background: #fff;
+  border: 1px solid #e0e0e8;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.binding-info {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.binding-elements {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.binding-element {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+}
+
+.binding-element-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.binding-element-type {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  background: #eef;
+  color: #1a1a2e;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.binding-element-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.binding-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.binding-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.binding-input-row label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #666;
+  min-width: 70px;
+}
+
+.binding-input-row select {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  background: #fff;
+}
+
+.binding-input-row select:focus {
+  outline: none;
+  border-color: #1a1a2e;
+}
+
+.binding-input-row select[multiple] {
+  min-height: 80px;
+}
+
+/* Shared empty state */
+.empty-state {
+  font-size: 0.85rem;
+  color: #999;
+  padding: 1rem 0;
+}
