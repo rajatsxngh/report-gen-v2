@@ -1,0 +1,499 @@
+/* Override main-content constraints for the template builder */
+.main-content:has(.template-builder) {
+  max-width: 100%;
+  padding: 0;
+}
+
+.template-builder {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 56px);
+}
+
+/* ---- Header Bar ---- */
+
+.builder-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.625rem 1rem;
+  background: #fff;
+  border-bottom: 1px solid #e2e2ea;
+  flex-shrink: 0;
+}
+
+.builder-name-input {
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0.375rem 0.5rem;
+  background: transparent;
+  color: #1a1a2e;
+  flex: 1;
+  max-width: 400px;
+}
+
+.builder-name-input:hover,
+.builder-name-input:focus {
+  border-color: #d0d0e0;
+  outline: none;
+  background: #f5f5f9;
+}
+
+.btn-save {
+  padding: 0.5rem 1.25rem;
+  background: #4f46e5;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-left: auto;
+}
+
+.btn-save:hover {
+  background: #4338ca;
+}
+
+.btn-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---- Builder Body (3-column layout) ---- */
+
+.builder-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ---- Element Palette ---- */
+
+.element-palette {
+  width: 220px;
+  background: #fff;
+  border-right: 1px solid #e2e2ea;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.palette-title {
+  padding: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #8888a0;
+  border-bottom: 1px solid #e2e2ea;
+}
+
+.palette-items {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.palette-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 6px;
+  cursor: grab;
+  border: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+  font-size: 0.875rem;
+  color: #1a1a2e;
+  background: transparent;
+  user-select: none;
+}
+
+.palette-item:hover {
+  background: #f0f0f8;
+  border-color: #e2e2ea;
+}
+
+.palette-item.dragging {
+  opacity: 0.4;
+}
+
+.palette-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: #f0f0f8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #4f46e5;
+  flex-shrink: 0;
+}
+
+/* ---- Canvas ---- */
+
+.canvas-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: #f5f5f9;
+}
+
+.canvas-area {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.canvas-drop-zone {
+  width: 100%;
+  max-width: 800px;
+  min-height: 400px;
+  background: #fff;
+  border-radius: 8px;
+  border: 2px dashed #d0d0e0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.canvas-drop-zone.over {
+  border-color: #4f46e5;
+  background: #f8f7ff;
+}
+
+.canvas-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: #8888a0;
+  text-align: center;
+  flex: 1;
+}
+
+.canvas-empty p {
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+}
+
+/* ---- Canvas Element ---- */
+
+.canvas-element {
+  position: relative;
+  border: 1px solid #e2e2ea;
+  border-radius: 6px;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+}
+
+.canvas-element:hover {
+  border-color: #c0c0d0;
+}
+
+.canvas-element.selected {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+}
+
+.canvas-element.dragging {
+  opacity: 0.4;
+}
+
+.element-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #f0f0f8;
+  font-size: 0.8rem;
+  color: #8888a0;
+}
+
+.drag-handle {
+  cursor: grab;
+  color: #b0b0c0;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.drag-handle:hover {
+  background: #f0f0f8;
+  color: #6666a0;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.element-type-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  background: #f0f0f8;
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  color: #6666a0;
+}
+
+.element-label {
+  flex: 1;
+  text-align: right;
+  font-size: 0.8rem;
+  color: #a0a0b8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.element-delete {
+  background: none;
+  border: none;
+  color: #b0b0c0;
+  cursor: pointer;
+  padding: 0.125rem 0.375rem;
+  font-size: 1.1rem;
+  line-height: 1;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.element-delete:hover {
+  color: #e53e3e;
+  background: #fff5f5;
+}
+
+/* ---- Element Previews ---- */
+
+.element-preview {
+  padding: 1rem 0.75rem;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a0a0b8;
+  font-size: 0.85rem;
+}
+
+.element-preview-header {
+  width: 100%;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.element-preview-header.h1 { font-size: 1.5rem; }
+.element-preview-header.h2 { font-size: 1.25rem; }
+.element-preview-header.h3 { font-size: 1.1rem; }
+.element-preview-header.h4 { font-size: 1rem; }
+.element-preview-header.h5 { font-size: 0.9rem; }
+.element-preview-header.h6 { font-size: 0.85rem; }
+
+.element-preview-text {
+  width: 100%;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.element-preview-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 48px;
+  position: relative;
+}
+
+.preview-bar {
+  width: 14px;
+  background: #4f46e5;
+  border-radius: 2px 2px 0 0;
+  opacity: 0.6;
+}
+
+.preview-line-svg {
+  width: 100px;
+  height: 40px;
+}
+
+.preview-chart-label {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #a0a0b8;
+}
+
+.element-preview-table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #e2e2ea;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 140px;
+}
+
+.preview-table-cell {
+  background: #f5f5f9;
+  padding: 4px 8px;
+  font-size: 0.65rem;
+  color: #8888a0;
+  text-align: center;
+}
+
+.preview-table-cell.header-cell {
+  background: #e8e8f0;
+  font-weight: 600;
+}
+
+/* ---- Resize Handle ---- */
+
+.resize-handle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  cursor: ns-resize;
+  background: transparent;
+  border-radius: 0 0 6px 6px;
+  transition: background 0.15s;
+}
+
+.resize-handle:hover,
+.resize-handle:active {
+  background: rgba(79, 70, 229, 0.12);
+}
+
+/* ---- Config Panel ---- */
+
+.config-panel {
+  width: 300px;
+  background: #fff;
+  border-left: 1px solid #e2e2ea;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+
+.config-panel-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #8888a0;
+  font-size: 0.875rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.config-panel-header {
+  padding: 1rem;
+  border-bottom: 1px solid #e2e2ea;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #8888a0;
+}
+
+.config-fields {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.config-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.375rem;
+}
+
+.config-field input,
+.config-field textarea,
+.config-field select {
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  border: 1px solid #d0d0e0;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: #1a1a2e;
+  background: #fff;
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+
+.config-field input:focus,
+.config-field textarea:focus,
+.config-field select:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.config-field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.config-field input[type="color"] {
+  padding: 0.25rem;
+  height: 36px;
+  cursor: pointer;
+}
+
+.config-field input[type="number"] {
+  max-width: 120px;
+}
+
+/* ---- Drag Overlay ---- */
+
+.drag-overlay-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: 6px;
+  background: #fff;
+  border: 2px solid #4f46e5;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1a1a2e;
+  pointer-events: none;
+}
+
+/* ---- Loading State ---- */
+
+.builder-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 56px);
+  color: #8888a0;
+  font-size: 0.9rem;
+}
