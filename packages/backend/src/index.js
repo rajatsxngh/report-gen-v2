@@ -16,6 +16,7 @@ const templatesRouter = require('./routes/templates');
 const datasetsRouter = require('./routes/datasets');
 const schedulesRouter = require('./routes/schedules');
 const reportsRouter = require('./routes/reports');
+const dashboardRouter = require('./routes/dashboard');
 const { start: startCron } = require('./cron');
 
 const app = express();
@@ -28,6 +29,7 @@ app.use('/api/templates', templatesRouter);
 app.use('/api/datasets', datasetsRouter);
 app.use('/api/schedules', schedulesRouter);
 app.use('/api/reports', reportsRouter);
+app.use('/api/dashboard', dashboardRouter);
 
 app.listen(PORT, () => {
   console.log(`Backend server running on http://localhost:${PORT}`);
