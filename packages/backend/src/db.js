@@ -32,6 +32,7 @@ db.exec(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     description TEXT,
+    category TEXT,
     data TEXT NOT NULL,
     created_at TEXT DEFAULT (datetime('now'))
   );
@@ -72,7 +73,7 @@ const count = db.prepare('SELECT COUNT(*) as count FROM datasets').get();
 
 if (count.count === 0) {
   const insertDataset = db.prepare(
-    'INSERT INTO datasets (name, description, data) VALUES (?, ?, ?)'
+    'INSERT INTO datasets (name, description, category, data) VALUES (?, ?, ?, ?)'
   );
 
   // 1. Sales data — 12+ months across 3 regions
@@ -96,6 +97,7 @@ if (count.count === 0) {
   insertDataset.run(
     'Sales Data',
     'Monthly sales figures across 3 regions (North, South, West) for 12 months',
+    'Sales',
     JSON.stringify(salesData)
   );
 
@@ -113,6 +115,7 @@ if (count.count === 0) {
   insertDataset.run(
     'User Metrics',
     'Daily user engagement metrics over 31 days',
+    'Analytics',
     JSON.stringify(userMetrics)
   );
 
@@ -132,6 +135,7 @@ if (count.count === 0) {
   insertDataset.run(
     'Inventory',
     'Product inventory with 22 items across 5 categories',
+    'Inventory',
     JSON.stringify(inventoryData)
   );
 }
