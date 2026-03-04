@@ -1,0 +1,379 @@
+/* Scheduler page layout */
+.scheduler-page h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.scheduler-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.scheduler-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.scheduler-main {
+  min-width: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn-primary {
+  background: #4f46e5;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #e5e5ef;
+  color: #1a1a2e;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: #fff;
+}
+
+.btn-sm {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+/* Error banner */
+.error-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  color: #b91c1c;
+  font-size: 0.875rem;
+}
+
+.error-banner button {
+  background: none;
+  border: none;
+  color: #b91c1c;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 0.25rem;
+}
+
+/* Loading */
+.loading-message {
+  color: #6b7280;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+/* Schedule List */
+.schedule-list {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e5ef;
+  overflow-x: auto;
+}
+
+.schedule-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.schedule-list th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e5ef;
+  white-space: nowrap;
+}
+
+.schedule-list td {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid #f3f3f8;
+  white-space: nowrap;
+}
+
+.schedule-list tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.schedule-list .row-disabled td {
+  opacity: 0.5;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.schedule-list-empty {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e5ef;
+  padding: 2rem;
+  text-align: center;
+  color: #6b7280;
+}
+
+/* Toggle button */
+.toggle-btn {
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.toggle-on {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.toggle-off {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Upcoming Runs sidebar */
+.upcoming-runs {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e5ef;
+  padding: 1rem;
+}
+
+.upcoming-runs h3 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #1a1a2e;
+}
+
+.upcoming-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.upcoming-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f3f3f8;
+  font-size: 0.8rem;
+}
+
+.upcoming-item:last-child {
+  border-bottom: none;
+}
+
+.upcoming-template {
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.upcoming-freq {
+  color: #6b7280;
+  text-transform: capitalize;
+  font-size: 0.75rem;
+}
+
+.upcoming-time {
+  color: #4f46e5;
+  font-size: 0.75rem;
+}
+
+.empty-message {
+  color: #6b7280;
+  font-size: 0.875rem;
+  padding: 0.5rem 0;
+}
+
+/* Run History */
+.run-history-section {
+  margin-top: 1.5rem;
+}
+
+.run-history {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e5ef;
+  padding: 1rem;
+}
+
+.run-history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.run-history-header h3 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.run-history-header h3 span {
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.run-history table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.run-history th {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e5ef;
+}
+
+.run-history td {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #f3f3f8;
+}
+
+.error-cell {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #b91c1c;
+}
+
+/* Status badge */
+.status-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-success {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-failed {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+/* Schedule Form (modal overlay) */
+.schedule-form-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.schedule-form {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 420px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.schedule-form h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1a1a2e;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.875rem;
+}
+
+.form-field span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-field select,
+.form-field input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  background: #fff;
+  color: #1a1a2e;
+  transition: border-color 0.15s;
+}
+
+.form-field select:focus,
+.form-field input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .scheduler-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scheduler-sidebar {
+    order: -1;
+  }
+}
