@@ -22,7 +22,10 @@ db.exec(`
     template_id INTEGER NOT NULL,
     type TEXT NOT NULL,
     label TEXT,
+    position TEXT DEFAULT '{}',
+    size TEXT DEFAULT '{}',
     config TEXT DEFAULT '{}',
+    data_binding TEXT DEFAULT '{}',
     sort_order INTEGER DEFAULT 0,
     created_at TEXT DEFAULT (datetime('now')),
     FOREIGN KEY (template_id) REFERENCES templates(id) ON DELETE CASCADE
@@ -63,6 +66,20 @@ db.exec(`
     FOREIGN KEY (dataset_id) REFERENCES datasets(id) ON DELETE CASCADE
   );
 `);
+
+// Migrate template_elements: add columns if missing (for existing databases)
+const columnsInfo = db.prepare("PRAGMA table_info(template_elements)").all();
+const existingCols = new Set(columnsInfo.map(c => c.name));
+const migrations = [
+  { name: 'position', sql: "ALTER TABLE template_elements ADD COLUMN position TEXT DEFAULT '{}'" },
+  { name: 'size', sql: "ALTER TABLE template_elements ADD COLUMN size TEXT DEFAULT '{}'" },
+  { name: 'data_binding', sql: "ALTER TABLE template_elements ADD COLUMN data_binding TEXT DEFAULT '{}'" },
+];
+for (const m of migrations) {
+  if (!existingCols.has(m.name)) {
+    db.exec(m.sql);
+  }
+}
 
 // Seed mock datasets if none exist
 const count = db.prepare('SELECT COUNT(*) as count FROM datasets').get();
