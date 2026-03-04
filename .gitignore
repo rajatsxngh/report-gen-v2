@@ -1,0 +1,4 @@
+node_modules/
+dist/
+packages/backend/data/
+*.db
