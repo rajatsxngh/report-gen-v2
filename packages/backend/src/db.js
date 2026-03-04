@@ -22,7 +22,10 @@ db.exec(`
     template_id INTEGER NOT NULL,
     type TEXT NOT NULL,
     label TEXT,
+    position TEXT DEFAULT '{}',
+    size TEXT DEFAULT '{}',
     config TEXT DEFAULT '{}',
+    data_binding TEXT DEFAULT '{}',
     sort_order INTEGER DEFAULT 0,
     created_at TEXT DEFAULT (datetime('now')),
     FOREIGN KEY (template_id) REFERENCES templates(id) ON DELETE CASCADE
@@ -32,6 +35,7 @@ db.exec(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     description TEXT,
+    category TEXT,
     data TEXT NOT NULL,
     created_at TEXT DEFAULT (datetime('now'))
   );
@@ -42,6 +46,9 @@ db.exec(`
     dataset_id INTEGER NOT NULL,
     frequency TEXT NOT NULL,
     time TEXT NOT NULL,
+    day_of_week INTEGER,
+    day_of_month INTEGER,
+    next_run TEXT,
     email TEXT,
     enabled INTEGER DEFAULT 1,
     created_at TEXT DEFAULT (datetime('now')),
@@ -64,12 +71,26 @@ db.exec(`
   );
 `);
 
+// Migrate template_elements: add columns if missing (for existing databases)
+const columnsInfo = db.prepare("PRAGMA table_info(template_elements)").all();
+const existingCols = new Set(columnsInfo.map(c => c.name));
+const migrations = [
+  { name: 'position', sql: "ALTER TABLE template_elements ADD COLUMN position TEXT DEFAULT '{}'" },
+  { name: 'size', sql: "ALTER TABLE template_elements ADD COLUMN size TEXT DEFAULT '{}'" },
+  { name: 'data_binding', sql: "ALTER TABLE template_elements ADD COLUMN data_binding TEXT DEFAULT '{}'" },
+];
+for (const m of migrations) {
+  if (!existingCols.has(m.name)) {
+    db.exec(m.sql);
+  }
+}
+
 // Seed mock datasets if none exist
 const count = db.prepare('SELECT COUNT(*) as count FROM datasets').get();
 
 if (count.count === 0) {
   const insertDataset = db.prepare(
-    'INSERT INTO datasets (name, description, data) VALUES (?, ?, ?)'
+    'INSERT INTO datasets (name, description, category, data) VALUES (?, ?, ?, ?)'
   );
 
   // 1. Sales data — 12+ months across 3 regions
@@ -93,6 +114,7 @@ if (count.count === 0) {
   insertDataset.run(
     'Sales Data',
     'Monthly sales figures across 3 regions (North, South, West) for 12 months',
+    'Sales',
     JSON.stringify(salesData)
   );
 
@@ -110,6 +132,7 @@ if (count.count === 0) {
   insertDataset.run(
     'User Metrics',
     'Daily user engagement metrics over 31 days',
+    'Analytics',
     JSON.stringify(userMetrics)
   );
 
@@ -129,6 +152,7 @@ if (count.count === 0) {
   insertDataset.run(
     'Inventory',
     'Product inventory with 22 items across 5 categories',
+    'Inventory',
     JSON.stringify(inventoryData)
   );
 }
